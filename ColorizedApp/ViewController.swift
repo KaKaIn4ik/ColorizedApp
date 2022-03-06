@@ -21,21 +21,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        redSlider.value = 1
-        redSlider.minimumValue = 0
-        redSlider.maximumValue = 1
         redSlider.minimumTrackTintColor = .red
         redColorLabel.text = String(redSlider.value)
         
-        greenSlider.value = 1
-        greenSlider.minimumValue = 0
-        greenSlider.maximumValue = 1
         greenSlider.minimumTrackTintColor = .green
         greenColorLabel.text = String(greenSlider.value)
 
-        blueSlider.value = 1
-        blueSlider.minimumValue = 0
-        blueSlider.maximumValue = 1
         blueSlider.minimumTrackTintColor = .blue
         blueColorLabel.text = String(blueSlider.value)
         
