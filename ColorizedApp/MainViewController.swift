@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SettingsViewControllerDelegate {
+    
+}
+
 class MainViewController: UIViewController {
 
     @IBOutlet var basicView: UIView!
@@ -19,7 +23,10 @@ class MainViewController: UIViewController {
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider: UISlider!
     
-
+    @IBOutlet var redTextField: UITextField!
+    @IBOutlet var greenTextField: UITextField!
+    @IBOutlet var blueTextField: UITextField!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +38,7 @@ class MainViewController: UIViewController {
         setColor()
         
         setValue(for: redColorLabel, greenColorLabel, blueColorLabel)
+        valueTextField(for: redTextField, greenTextField, blueTextField)
         
     }
    
@@ -46,6 +54,9 @@ class MainViewController: UIViewController {
         default:
             blueColorLabel.text = string(from: blueSlider)
         }
+        redTextField.text = String(format: "%.2f", redSlider.value)
+        greenTextField.text = String(format: "%.2f", greenSlider.value)
+        blueTextField.text = String(format: "%.2f", blueSlider.value)
     }
     
     private func setColor() {
@@ -67,9 +78,21 @@ class MainViewController: UIViewController {
             default:
                 blueColorLabel.text = string(from: blueSlider)
             }
-            
+
         }
-        
+
+    }
+    private func valueTextField(for textFields: UITextField...) {
+        textFields.forEach { textField in
+            switch textField {
+            case redTextField:
+                redTextField.text = (string(from: redSlider))
+            case greenTextField:
+                greenTextField.text = string(from: greenSlider)
+            default:
+                blueTextField.text = string(from: blueSlider)
+            }
+}
     }
 
     private func string(from slider: UISlider) -> String {
