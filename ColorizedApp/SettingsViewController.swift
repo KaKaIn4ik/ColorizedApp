@@ -37,8 +37,8 @@ class SettingsViewController: UIViewController {
         greenSlider.minimumTrackTintColor = .green
         
         basicView.backgroundColor = mediator
-        setColor()
         decompositionComponents()
+        setColor()
 
         setValue(for: redColorLabel, greenColorLabel, blueColorLabel)
         valueTextField(for: redTextField, greenTextField, blueTextField)
@@ -82,8 +82,10 @@ class SettingsViewController: UIViewController {
         redSlider.value = Float(mainColor.red)
         greenSlider.value = Float(mainColor.green)
         blueSlider.value = Float(mainColor.blue)
-        
-        
+
+//        redTextField.text = String(mainColor.red)
+//        greenTextField.text = String(mainColor.green)
+//        blueTextField.text = String(mainColor.blue)
     }
     
     private func setValue(for labels: UILabel...) {
