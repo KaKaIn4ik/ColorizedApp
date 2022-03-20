@@ -24,6 +24,9 @@ class SettingsViewController: UIViewController {
     @IBOutlet var redTextField: UITextField!
     @IBOutlet var greenTextField: UITextField!
     @IBOutlet var blueTextField: UITextField!
+
+    var delegate: SettingsViewControllerDelegate!
+    var mediator: UIColor!
     
 
     override func viewDidLoad() {
@@ -33,8 +36,10 @@ class SettingsViewController: UIViewController {
         redSlider.minimumTrackTintColor = .red
         greenSlider.minimumTrackTintColor = .green
         
+        basicView.backgroundColor = mediator
         setColor()
-        
+        decompositionComponents()
+
         setValue(for: redColorLabel, greenColorLabel, blueColorLabel)
         valueTextField(for: redTextField, greenTextField, blueTextField)
         
@@ -57,6 +62,10 @@ class SettingsViewController: UIViewController {
         blueTextField.text = String(format: "%.2f", blueSlider.value)
     }
     
+    @IBAction func doneButtonPressed() {
+        delegate.setColor(color: UIColor.blue)
+    }
+
     private func setColor() {
         basicView.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
@@ -64,6 +73,17 @@ class SettingsViewController: UIViewController {
             blue: CGFloat(blueSlider.value),
             alpha: 1
         )
+    }
+    
+    private func decompositionComponents(){
+        
+        let mainColor = CIColor(color: mediator)
+        
+        redSlider.value = Float(mainColor.red)
+        greenSlider.value = Float(mainColor.green)
+        blueSlider.value = Float(mainColor.blue)
+        
+        
     }
     
     private func setValue(for labels: UILabel...) {
