@@ -63,7 +63,9 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed() {
-        delegate.setColor(color: UIColor.blue)
+        guard let color = basicView.backgroundColor else { return }
+        delegate.setColor(color: color)
+        dismiss(animated: true)
     }
 
     private func setColor() {

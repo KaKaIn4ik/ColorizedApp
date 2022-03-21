@@ -15,13 +15,6 @@ protocol SettingsViewControllerDelegate {
 class MainViewContoller : UIViewController {
 
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-        
-        
-    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let settingVC = segue.destination as? SettingsViewController else {return}
@@ -35,10 +28,8 @@ class MainViewContoller : UIViewController {
 // MARK: - SettingsViewControllerDelegate
 extension MainViewContoller: SettingsViewControllerDelegate {
     func setColor(color: UIColor) {
-    
+        view.backgroundColor = color
     }
     
 
-    
-    
 }
